@@ -8,14 +8,15 @@ const db eps=1e-7;
 
 struct Point{
 	db x,y;
-	void Rotate(Point &a,db theta){
-		a.x=a.x*cos(theta)-a.y*sin(theta);
-		a.y=a.x*sin(theta)+a.y*cos(theta);
+	void Rotate(db theta){
+		db a=x,b=y;
+		x=a*cos(theta)-b*sin(theta);
+		y=a*sin(theta)+b*cos(theta);
 	}
 	Point(){}
 	Point(db a,db b){
 		x=a+eps,y=b+eps;
-		Rotate(*this,eps);
+		this->Rotate(eps);
 	}
 }P[N],Q[N];
 bool operator < (const Point &lhs,const Point &rhs){
